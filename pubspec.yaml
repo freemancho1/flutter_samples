@@ -1,0 +1,50 @@
+name: flutter_samples
+description: A new Flutter project.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.19.6 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+  # 추가 아이콘
+  # import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+  # Icon(MdiIcons.arrowCircleUp),
+  # Icon확인: https://pictogrammers.com/library/mdi/
+  material_design_icons_flutter: ^6.0.7096
+
+  # system/menu/menu_router.dart에서 사용
+  # GoRouter
+  go_router: ^6.0.0
+
+  # database/hive에서 사용
+  # (물론 전처리를 위해 main.dart에서도 사용함)
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+
+  # DateTimeFormat 등 사용
+  intl: ^0.18.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+
+  # database/hive에서 사용
+  # (물론 전처리를 위해 main.dart에서도 사용함)
+  ## hive table을 만들때 사용함
+  hive_generator: ^2.0.0
+  build_runner: ^2.3.3
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - assets/
