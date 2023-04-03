@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_samples/samples/database/hive/hive_config.dart';
@@ -83,7 +82,7 @@ class _FavoriteBookState extends State<FavoriteBook> {
       Directory dir = await _getDirectory();
       debugPrint('New Dir: ${dir.absolute}');
       String fullPath = '${dir.path}'
-        '${HiveCfg.dirFormat.format(DateTime.now())}.hivebackup';
+        '${HiveCfg.dirFormat.format(DateTime.now())}.back';
       debugPrint('New backupfile: $fullPath');
       File backupFile = File(fullPath);
       await backupFile.writeAsString(fbJson);
@@ -105,12 +104,19 @@ class _FavoriteBookState extends State<FavoriteBook> {
       const SnackBar(content: Text('백업데이터 복구.')),
     );
 
+    /// 저장(백업)은 잘 되는데 FilePicker에 문제가 있는지 이 부분이 잘 안됨.
     FilePickerResult? fpResult =
-        await FilePicker.platform.pickFiles(type: FileType.any);
+        await FilePicker.platform.pickFiles(
+          dialogTitle: '백업파일 찾기',
+          initialDirectory: '/storage/emulated/0/Android/data/com.example.flutter_samples/files/backups/',
+          type: FileType.any,
+        );
     debugPrint('File Picker Result: $fpResult');
     if (fpResult == null) return;
 
     File file = File(fpResult.files.single.path!);
+    /// 아래와 같이 특정 폴더의 위치를 주면 정상적으로 불러옴
+    /// File file = File('/storage/emulated/0/Android/data/com.example.flutter_samples/files/backups/202304032040.back');
     _fbBox.clear();
     Map<dynamic, dynamic> map =
         /* file.readAsStringSync() */

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_samples/samples/database/hive/etc/counter.dart';
+import 'package:flutter_samples/samples/database/hive/etc/favorite_book.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import 'package:flutter_samples/samples/appbar/animation.dart';
@@ -93,6 +94,26 @@ final List<MenuGroup> menus = [
         ],
         routeName: 'hive/etc/counter',
         builder: (context) => const Counter(),
+      ),
+      MenuItem(
+        title: '좋아하는 책 선택',
+        description: '책 리스트에서 좋아하는 책에 하트를 주는 간단한 앱이지만, '
+            '데이터를 파일에 저장하거나 파일에 저장된 데이터를 복구하는 기능 json '
+            '형식으로 구현되어 있음.',
+        subTitles: [
+          'AppBar actions 사용법',
+          'ValueListenableBuilder를 이용해 하이브 테이블 상태변화 체크',
+          'containsKey를 이용해 하이브 DB 값 확인',
+          'ScaffoldMessenger를 이용한 SnackBar 구현',
+          '하이브 데이터를 toMap()을 이용해 Map<K,V> 데이터 만들기',
+          '파일 처리를 위한 AndroidManifest.xml에 권한 주기',
+          'Map<K,V> 데이터를 json으로 변환하고 이를 파일로 저장',
+          '하이브 DB를 모두 지우기',
+          '파일을 Map<K,V>형 json으로 읽기',
+          '여러 레코드의 데이터를 하이브에 일괄 저장'
+        ],
+        routeName: 'hive/etc/favorite_book',
+        builder: (context) => const FavoriteBook(),
       ),
       MenuItem(
         title: '할일 목록',

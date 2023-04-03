@@ -55,6 +55,20 @@
 
 <br/>
 
+### 좋아하는 책 선택
+책 리스트에서 좋아하는 책에 하트를 주는 간단한 앱이지만, 
+`하이브 데이터를 파일에 저장(백업)하는 방법과 복구하는 기능`을 JSON 형식으로
+구현하였으며, 이를 위해 AndroidManifest.xml에 권한주는 방법등을 확인할 수 있다.
+* AppBar actions
+* ValueListenableBuilder
+* Hive.containsKey
+* ScaffoldMessenger을 이용한 SnackBar
+* 하이브 데이터를 toMap()함수를 이용해 Map<K,V> 형태로 변환
+* 파일 처리를 위해 AndroidManifest.xml에 권한 주기
+* 여러 레코드 데이터를 하이브에 일괄 저장
+
+<br/>
+
 ### 할일목록
 간단한 할일목록 관리 프로그램을 통해, 
 하이브를 플루터에서 이용하는 방법과 
