@@ -43,6 +43,7 @@ class HomePage extends StatelessWidget {
       future: Future.wait([
         Hive.openBox(HiveCfg.tableTodoSettingsName),
         Hive.openBox<Todo>(HiveCfg.tableTodoName),
+        Hive.openBox<int>(HiveCfg.tableCounterName),
       ]),
       builder: (context, snapshot) =>
         (snapshot.error != null)

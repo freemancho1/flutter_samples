@@ -1,8 +1,10 @@
 class HiveCfg {
-  /// 하이브에서 테이블이 여러개인 경우, 이 처럼 한곳에서 테이블 ID를 관리하는 것을 추천함.
+  /// 하이브에서 테이블이 여러개인 경우,
+  /// 이 처럼 한곳에서 테이블 ID를 관리하는 것을 추천함.
   static const tableTodoId = 0;
   static const tableTodoName = 'todos';
   static const tableTodoSettingsName = 'todo_settings';
+  static const tableCounterName = 'counter';
 }
 
 /// 아래 enum은 사용하지 않지만, 사용법의 좋은 예이니 남겨둠.

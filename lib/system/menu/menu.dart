@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_samples/samples/database/hive/etc/counter.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 import 'package:flutter_samples/samples/appbar/animation.dart';
@@ -78,6 +79,21 @@ final List<MenuGroup> menus = [
     subTitle: 'Todo, Contacts, Counter & Favorite book 등',
     icon: const Icon(MdiIcons.databaseSync),
     menuItems: [
+      MenuItem(
+        title: '카운터',
+        description: '증가 또는 감소되는 값을 프로그램에서 직접 표시하는 방식이 아닌, '
+            '이를 하이브에 저장한 후 하이브의 변화를 감지해 변화가 생기면 값을 표시함',
+        subTitles: [
+          '하이브 초기화',
+          '메인에서 오픈된 박스를 별칭으로 사용',
+          'ValueListenableBuilder를 이용해 하이브 테이블 상태변화 체크',
+          '테이블 읽어고 수정하는 방법(단, 조건은 없음)',
+          'FloatingActionButton 2개 사용',
+          'Material Design Icons 사용법',
+        ],
+        routeName: 'hive/etc/counter',
+        builder: (context) => const Counter(),
+      ),
       MenuItem(
         title: '할일 목록',
         description: '간단한 할일 목록 관리 프로그램으로 하이브 관련 다양한 내용을 '
