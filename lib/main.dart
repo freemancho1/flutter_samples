@@ -44,6 +44,7 @@ class HomePage extends StatelessWidget {
         Hive.openBox(HiveCfg.tableTodoSettingsName),
         Hive.openBox<Todo>(HiveCfg.tableTodoName),
         Hive.openBox<int>(HiveCfg.tableCounterName),
+        Hive.openBox<String>(HiveCfg.tableFavoriteName),
       ]),
       builder: (context, snapshot) =>
         (snapshot.error != null)

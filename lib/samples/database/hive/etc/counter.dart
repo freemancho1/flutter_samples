@@ -44,7 +44,12 @@ class _CounterState extends State<Counter> {
     floatingActionButton: Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
+        /// FAB를 2개 이상 사용할 경우 동작은 잘 되는듯 보이지만,
+        /// Flutter에서 애니메이션 처리 등을 위해 만든 HeroWidget 형태를 띠고 있어
+        /// 각각 고유한 `heroTag`를 지정해야 함
         FloatingActionButton(
+          /// 이를 지정하지 않으면 `heroTag` 충돌로 에러가 발생함.
+          heroTag: 'decrement button',
           onPressed: () {
             /// 현재값을 읽어와 1을 더해 다시 저장함.
             int currValue = _counterBox.get(_accKey, defaultValue: 0)!;
@@ -54,7 +59,9 @@ class _CounterState extends State<Counter> {
           tooltip: 'Decrement',
           child: const Icon(MdiIcons.minusCircle),
         ),
+        const SizedBox(width: 8,),
         FloatingActionButton(
+          heroTag: 'increment button',
           onPressed: () {
             int currValue = _counterBox.get(_accKey, defaultValue: 0)!;
             _counterBox.put(_accKey, currValue + 1);

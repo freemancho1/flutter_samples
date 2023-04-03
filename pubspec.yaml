@@ -30,6 +30,11 @@ dependencies:
   # DateTimeFormat 등 사용
   intl: ^0.18.0
 
+  # database/hive/etc/favorite_books에서 사용
+  # 파일처리 관련 라이브러리
+  path_provider: ^2.0.14
+  file_picker: ^5.2.6
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
