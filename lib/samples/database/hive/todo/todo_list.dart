@@ -98,6 +98,7 @@ class _DeleteAlertDialog extends StatelessWidget {
             child: const Text('Cancel'),
           ),
           TextButton(
+            /// DB에서 값을 지우는데 await를 사용하지 않네?
             onPressed: () {
               todo.delete();
               Navigator.of(context).pop();

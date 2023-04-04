@@ -69,6 +69,7 @@ class _TodoAppState extends State<TodoApp> {
                   valueListenable:
                       Hive.box<Todo>(HiveCfg.tableTodoName).listenable(),
                   builder: (context, boxTodos, _) {
+                    /// 테이블을 리스트로 변경해서 데이터를 직접 삭제하고 수정
                     List<Todo> todos = boxTodos.values.toList().cast<Todo>();
                     if (reversed) {
                       todos = todos.reversed.toList();

@@ -94,6 +94,21 @@
 
 <br/>
 
+### 연락처 
+> /lib/samples/database/hive/contacts/contacts_app.dart...
+
+다양한 형태의 입력 폼을 활용해 연락처를 관리하는 앱
+* enum 형태의 데이터를 하이브 테이블로 생성
+* 테이블을 리스트뷰 빌더를 이용해 관리
+* InkWel(GestureDetector와 유사) 사용
+* async 함수에서 context를 사용할 때 발생하는 경고 제공
+* GlobalKey를 이용해 폼 제어
+* 다양한 형태의 입력 폼
+* enum 데이터를 활용한 드롭다운 버튼 만들기
+* 폼 submit
+
+<br/>
+
 ### 미니 그림판
 > /lib/samples/database/hive/sketchpad/sketch_pad.dart...
 
@@ -114,7 +129,7 @@
 > Dart CodeStyle중 TabSize 조정
 
 * ./.config/Google/AndroidStudio2021.3/codestyles/Default.xml에 아래 내용 추
-```json
+```
   <codeStyleSettings language="Dart">
     <indentOptions>
       <option name="INDENT_SIZE" value="2" />

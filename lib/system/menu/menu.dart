@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_samples/samples/database/hive/contacts/contacts_app.dart';
 import 'package:flutter_samples/samples/database/hive/etc/counter.dart';
 import 'package:flutter_samples/samples/database/hive/etc/favorite_book.dart';
 import 'package:flutter_samples/samples/database/hive/sketchpad/sketch_pad.dart';
@@ -123,6 +124,7 @@ final List<MenuGroup> menus = [
             'hive_generator와 build_runner를 이용해 테이블 생성',
             '상태정보 저장 및 테이블 저장/수정',
             'ValueListenableBuilder를 이용해 하이브 테이블 상태변화 체크',
+            '테이블을 리스트로 변경해서 관'
             '테이블 읽어고 삭제하는 방법(단, 조건은 없음)',
             '다이얼로그 생성',
             '카드 위젯과 카드 리스트 생성',
@@ -131,6 +133,22 @@ final List<MenuGroup> menus = [
           ],
           routeName: 'hive/todos',
           builder: (context) => const TodoApp(),
+        ),
+        MenuItem(
+          title: '연락처',
+          description: '다양한 형태의 입력 폼을 활용해 연락처를 관리하는 앱',
+          subTitles: [
+            'enum 형태의 데이터를 하이브 테이블로 생성',
+            '테이블을 리스트뷰 빌더를 이용해 관리',
+            'InkWel(GestureDetector와 유사) 사용',
+            'async 함수에서 context를 사용할 때 발생하는 경고 제공',
+            'GlobalKey를 이용해 폼 제어',
+            '다양한 형태의 입력 폼',
+            'enum 데이터를 활용한 드롭다운 버튼 만들기',
+            '폼 submit',
+          ],
+          routeName: 'hive/contacts',
+          builder: (context) => const ContactsApp(),
         ),
         MenuItem(
           title: '미니 그림판',
