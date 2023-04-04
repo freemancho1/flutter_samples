@@ -7,10 +7,10 @@ class MakeLoadingMessage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Center(
-    child: Text(
-      message,
-      style: SystemCfg.loadingMessageStyle,
-      maxLines: 1,
-    ),
-  );
+        child: Text(
+          message,
+          style: SystemCfg.loadingMessageStyle,
+          maxLines: 1,
+        ),
+      );
 }

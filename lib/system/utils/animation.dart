@@ -7,22 +7,22 @@ class MakeLoadingIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Column(
-    mainAxisAlignment: MainAxisAlignment.center,
-    crossAxisAlignment: CrossAxisAlignment.center,
-    children: [
-      const SizedBox(
-        width: 32,
-        height: 32,
-        child: CircularProgressIndicator(),
-      ),
-      Padding(
-        padding: const EdgeInsets.only(top: 16),
-        child: Text(
-          message,
-          style: SystemCfg.loadingMessageStyle,
-          maxLines: 1,
-        ),
-      ),
-    ],
-  );
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          const SizedBox(
+            width: 32,
+            height: 32,
+            child: CircularProgressIndicator(),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 16),
+            child: Text(
+              message,
+              style: SystemCfg.loadingMessageStyle,
+              maxLines: 1,
+            ),
+          ),
+        ],
+      );
 }

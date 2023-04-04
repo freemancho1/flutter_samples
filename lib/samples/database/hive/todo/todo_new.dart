@@ -22,38 +22,39 @@ class _TodoNewDialogState extends State<TodoNewDialog> {
 
   @override
   Widget build(BuildContext context) => AlertDialog(
-    title: const Text('New Todo'),
-    content: Padding(
-      padding: const EdgeInsets.only(top: 8, bottom: 8),
-      child: TextField(
-        controller: _tc,
-        decoration: const InputDecoration(
-          icon: Icon(Icons.today),
-          border: UnderlineInputBorder(),
-          hintText: 'Enter a New Task'
+        title: const Text('New Todo'),
+        content: Padding(
+          padding: const EdgeInsets.only(top: 8, bottom: 8),
+          child: TextField(
+            controller: _tc,
+            decoration: const InputDecoration(
+                icon: Icon(Icons.today),
+                border: UnderlineInputBorder(),
+                hintText: 'Enter a New Task'),
+          ),
         ),
-      ),
-    ),
-    actions: [
-      TextButton(
-        onPressed: () => Navigator.of(context).pop(),
-        child: const Text('Cancel'),
-      ),
-      TextButton(
-        onPressed: () {
-          if (_tc.text.isNotEmpty) {
-            Todo todo = Todo()
-                ..title = _tc.text
-                ..created = DateTime.now();
-            /// 신규생성: .add()
-            /// 업데이트: .save()
-            Hive.box<Todo>(HiveCfg.tableTodoName).add(todo);
-          }
-          /// 상위 컨텍스트에서 해당 위젯을 제거함.
-          Navigator.of(context).pop();
-        },
-        child: const Text('Add'),
-      ),
-    ],
-  );
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(),
+            child: const Text('Cancel'),
+          ),
+          TextButton(
+            onPressed: () {
+              if (_tc.text.isNotEmpty) {
+                Todo todo = Todo()
+                  ..name = _tc.text
+                  ..created = DateTime.now();
+
+                /// 신규생성: .add()
+                /// 업데이트: .save()
+                Hive.box<Todo>(HiveCfg.tableTodoName).add(todo);
+              }
+
+              /// 상위 컨텍스트에서 해당 위젯을 제거함.
+              Navigator.of(context).pop();
+            },
+            child: const Text('Add'),
+          ),
+        ],
+      );
 }

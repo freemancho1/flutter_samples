@@ -17,7 +17,7 @@ class TodoAdapter extends TypeAdapter<Todo> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Todo()
-      ..title = fields[0] as String
+      ..name = fields[0] as String
       ..created = fields[1] as DateTime
       ..done = fields[2] as bool;
   }
@@ -27,7 +27,7 @@ class TodoAdapter extends TypeAdapter<Todo> {
     writer
       ..writeByte(3)
       ..writeByte(0)
-      ..write(obj.title)
+      ..write(obj.name)
       ..writeByte(1)
       ..write(obj.created)
       ..writeByte(2)

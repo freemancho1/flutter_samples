@@ -31,40 +31,41 @@ class _FavoriteBookState extends State<FavoriteBook> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-    appBar: AppBar(
-      title: const Text('Favorite Books'),
-      actions: [
-        IconButton(
-          onPressed: _backup,
-          icon: const Icon(Icons.backup),
-        ),
-        IconButton(
-          onPressed: _restore,
-          icon: const Icon(Icons.restore),
-        )
-      ],
-    ),
-    body: ValueListenableBuilder(
-      valueListenable: _fbBox.listenable(),
-      builder: (context, fbBox, _) => ListView.builder(
-        itemCount: books.length,
-        itemBuilder: (context, bIndex) => ListTile(
-          title: Text(books[bIndex]),
-          trailing: IconButton(
-            icon: (
-                _fbBox.containsKey(bIndex)
-                  ? const Icon(Icons.favorite, color: Colors.deepOrange,)
-                  : const Icon(Icons.favorite_border)
+        appBar: AppBar(
+          title: const Text('Favorite Books'),
+          actions: [
+            IconButton(
+              onPressed: _backup,
+              icon: const Icon(Icons.backup),
             ),
-            onPressed: () => _fbBox.containsKey(bIndex)
-                ? _fbBox.delete(bIndex)
-                : _fbBox.put(bIndex, books[bIndex]),
+            IconButton(
+              onPressed: _restore,
+              icon: const Icon(Icons.restore),
+            )
+          ],
+        ),
+        body: ValueListenableBuilder(
+          valueListenable: _fbBox.listenable(),
+          builder: (context, fbBox, _) => ListView.builder(
+            itemCount: books.length,
+            itemBuilder: (context, bIndex) => ListTile(
+              title: Text(books[bIndex]),
+              trailing: IconButton(
+                icon: (_fbBox.containsKey(bIndex)
+                    ? const Icon(
+                        Icons.favorite,
+                        color: Colors.deepOrange,
+                      )
+                    : const Icon(Icons.favorite_border)),
+                onPressed: () => _fbBox.containsKey(bIndex)
+                    ? _fbBox.delete(bIndex)
+                    : _fbBox.put(bIndex, books[bIndex]),
+              ),
+            ),
           ),
         ),
-      ),
-    ),
-  );
-  
+      );
+
   Future<void> _backup() async {
     if (_fbBox.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -76,13 +77,13 @@ class _FavoriteBookState extends State<FavoriteBook> {
       );
 
       /// 하이브에 저장된 모든 데이터를 맵 형식으로 변환함.
-      Map<String, String> fbMap = _fbBox.toMap()
-          .map((key, value) => MapEntry(key.toString(), value));
+      Map<String, String> fbMap =
+          _fbBox.toMap().map((key, value) => MapEntry(key.toString(), value));
       String fbJson = jsonEncode(fbMap);
       Directory dir = await _getDirectory();
       debugPrint('New Dir: ${dir.absolute}');
       String fullPath = '${dir.path}'
-        '${HiveCfg.dirFormat.format(DateTime.now())}.back';
+          '${HiveCfg.dirFormat.format(DateTime.now())}.back';
       debugPrint('New backupfile: $fullPath');
       File backupFile = File(fullPath);
       await backupFile.writeAsString(fbJson);
@@ -105,16 +106,17 @@ class _FavoriteBookState extends State<FavoriteBook> {
     );
 
     /// 저장(백업)은 잘 되는데 FilePicker에 문제가 있는지 이 부분이 잘 안됨.
-    FilePickerResult? fpResult =
-        await FilePicker.platform.pickFiles(
-          dialogTitle: '백업파일 찾기',
-          initialDirectory: '/storage/emulated/0/Android/data/com.example.flutter_samples/files/backups/',
-          type: FileType.any,
-        );
+    FilePickerResult? fpResult = await FilePicker.platform.pickFiles(
+      dialogTitle: '백업파일 찾기',
+      initialDirectory:
+          '/storage/emulated/0/Android/data/com.example.flutter_samples/files/backups/',
+      type: FileType.any,
+    );
     debugPrint('File Picker Result: $fpResult');
     if (fpResult == null) return;
 
     File file = File(fpResult.files.single.path!);
+
     /// 아래와 같이 특정 폴더의 위치를 주면 정상적으로 불러옴
     /// File file = File('/storage/emulated/0/Android/data/com.example.flutter_samples/files/backups/202304032040.back');
     _fbBox.clear();
@@ -125,5 +127,4 @@ class _FavoriteBookState extends State<FavoriteBook> {
         map.map<int, String>((key, value) => MapEntry(int.parse(key), value));
     _fbBox.putAll(newMap);
   }
-
 }

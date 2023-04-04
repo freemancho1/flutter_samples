@@ -4,6 +4,8 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 import 'package:flutter_samples/samples/database/hive/todo/todo.dart';
 import 'package:flutter_samples/samples/database/hive/hive_config.dart';
+import 'package:flutter_samples/samples/database/hive/sketchpad/colored_path.dart';
+import 'package:flutter_samples/samples/database/hive/contacts/contact.dart';
 
 import 'package:flutter_samples/system/utils/animation.dart';
 import 'package:flutter_samples/system/utils/text.dart';
@@ -15,6 +17,9 @@ void main() async {
 
   /// 하이브 테이블아답터 등록
   Hive.registerAdapter(TodoAdapter());
+  Hive.registerAdapter(ColoredPathAdapter());
+  Hive.registerAdapter(ContactAdapter());
+  Hive.registerAdapter(RelationshipAdapter());
 
   runApp(const FlutterSamples());
 }
@@ -26,6 +31,7 @@ class FlutterSamples extends StatelessWidget {
   Widget build(BuildContext context) => MaterialApp.router(
     title: 'Flutter Samples',
     theme: ThemeData(primarySwatch: Colors.deepOrange),
+
     /// 하이브를 사용할 경우, main()에서 아답터 등록하고,
     /// 메인 MaterialApp에서 테이블을 다 오픈해 주는 것이 좋음
     /// 이 앱에서는 HomePage가 메인에 해당하기 때문에 그곳에서 진행함.
@@ -45,28 +51,26 @@ class HomePage extends StatelessWidget {
         Hive.openBox<Todo>(HiveCfg.tableTodoName),
         Hive.openBox<int>(HiveCfg.tableCounterName),
         Hive.openBox<String>(HiveCfg.tableFavoriteName),
+        Hive.openBox(HiveCfg.tableSketchPadName),
+        Hive.openBox<Contact>(HiveCfg.tableContactName),
       ]),
-      builder: (context, snapshot) =>
-        (snapshot.error != null)
-          ? const MakeLoadingMessage(message: 'Hive error...')
-          : (snapshot.connectionState == ConnectionState.done)
-            ? const ShowMenuList()
-            : const MakeLoadingIcon(message: 'Opening Hive DB...'),
+      builder: (context, snapshot) => (snapshot.error != null)
+        ? const MakeLoadingMessage(message: 'Hive error...')
+        : (snapshot.connectionState == ConnectionState.done)
+          ? const ShowMenuList()
+          : const MakeLoadingIcon(message: 'Opening Hive DB...'),
     ),
   );
 }
 
-final flutterSampleRouters = GoRouter(
-  routes: [ GoRoute(
+final flutterSampleRouters = GoRouter(routes: [
+  GoRoute(
     path: '/',
-    builder: (context, state) => const HomePage(),
-    routes: [
-      for (MenuGroup group in menus)
-        for (MenuItem item in group.menuItems)
-          GoRoute(
-            path: item.routeName,
-            builder: (context, state) => item.builder(context)
-          ),
-    ]
-  )]
-);
+    builder: (context, state) => const HomePage(), routes: [
+    for (MenuGroup group in menus)
+      for (MenuItem item in group.menuItems)
+        GoRoute(
+          path: item.routeName,
+          builder: (context, state) => item.builder(context)),
+  ])
+]);

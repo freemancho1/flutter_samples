@@ -34,7 +34,6 @@ class MenuCfg {
   );
   static const double itemWidth = double.infinity;
   // static const double itemHeight = 70.0;
-  static const EdgeInsetsGeometry itemPadding = EdgeInsets.only(
-      left: 57, right: 10, bottom: 10
-  );
+  static const EdgeInsetsGeometry itemPadding =
+      EdgeInsets.only(left: 57, right: 10, bottom: 10);
 }

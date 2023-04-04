@@ -4,11 +4,16 @@ class HiveCfg {
   /// 하이브에서 테이블이 여러개인 경우,
   /// 이 처럼 한곳에서 테이블 ID를 관리하는 것을 추천함.
   static const tableTodoId = 0;
+  static const tableColoredPathId = 1;
+  static const tableRelationshipId = 2;
+  static const tableContactId = 3;
 
   static const tableTodoName = 'todos';
   static const tableTodoSettingsName = 'todo_settings';
   static const tableCounterName = 'counter';
   static const tableFavoriteName = 'favorite_books';
+  static const tableSketchPadName = 'sketch_pad';
+  static const tableContactName = 'contacts';
 
   static DateFormat dirFormat = DateFormat('yyyyMMddHHmm');
 }
@@ -23,6 +28,7 @@ enum HiveTable {
   final int hiveId;
   final String boxName;
   const HiveTable(this.hiveId, this.boxName);
+
   /// 사용법
   /// HiveTable.todo.hiveId
 }
