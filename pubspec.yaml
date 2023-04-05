@@ -28,12 +28,37 @@ dependencies:
   hive_flutter: ^1.1.0
 
   # DateTimeFormat 등 사용
-  intl: ^0.18.0
+  # intl은 0.18.0 이상 나와있지만 fluent_ui 계열과 충돌이 있음
+  # 같이 쓸거면 0.17.0으로 버전 다운 필요
+  intl: ^0.17.0
 
   # database/hive/etc/favorite_books에서 사용
   # 파일처리 관련 라이브러리
   path_provider: ^2.0.14
   file_picker: ^5.2.6
+
+  # geo 데이터 처리
+  # utils/geo 이하에서 사용
+  # 이를 사용하기 위해서는 AndroidManifest.xml에 아래 권한 추가 필요
+  #  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+  #  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+  #  <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+  geolocator: ^9.0.2
+
+  # http 처리
+  # 다양한 곳에서 사용
+  # 이를 사용하기 위해서는 AndroidManifest.xml에 아래 권한 추가 필요
+  #  <uses-permission android:name="android.permission.INTERNET"/>
+  http: ^0.13.5
+
+  # 계산기 관련 추가
+  # product/calculator
+  auto_size_text: ^3.0.0
+  fluent_ui: ^4.0.0
+  fluentui_system_icons: ^1.1.168
+  flutter_layout_grid: ^2.0.1
+  flutter_riverpod: ^2.0.2
+  math_expressions: ^2.3.0
 
 dev_dependencies:
   flutter_test:

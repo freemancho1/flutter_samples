@@ -87,6 +87,19 @@ class _MakeContactList extends StatelessWidget {
     },
   );
 
+  /// 이렇게 해도 정상적으로 처리가 되지만(되는것 처럼 보이지만),
+  /// 정상적인 처리를 위해서는 아래와 같이 하길 추천함
+  /// 정확하게 보면 아래 deleteAt 함수에 키보드를 올려리면
+  /// Future<T> 형식의 리턴값을 보내면 다 await를 사용해야 함
+  /// void _deleteContact(int index) {
+  ///   box.deleteAt(index);
+  /// }
+  ///
+  /// 아래 함수의 경우는
+  /// _deleteContact 자체는 void를 리턴하기 때문에 호출 시 await를
+  /// 사용하지 않지만 함수에서 수행되는 함수 중
+  /// deleteAt이 Future<void>형을 리턴하기 때문에 async ~ await를
+  /// 사용해야 함.
   void _deleteContact(int index) async {
     await box.deleteAt(index);
   }

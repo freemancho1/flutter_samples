@@ -51,12 +51,13 @@ class _CounterState extends State<Counter> {
             FloatingActionButton(
               /// 이를 지정하지 않으면 `heroTag` 충돌로 에러가 발생함.
               heroTag: 'decrement button',
-              onPressed: () {
+              onPressed: () async {
                 /// 현재값을 읽어와 1을 더해 다시 저장함.
+                /// 참고로 값을 읽어오는 box.get()함수는 Future<T>형이 아니다.
                 int currValue = _counterBox.get(_accKey, defaultValue: 0)!;
-
                 /// 여기서 변경된 값이 위에 리스너에 감지되 출력된다.
-                _counterBox.put(_accKey, currValue - 1);
+                /// 저장하는 box.put()은 Future<T> 형이기 때문에 await를 사용
+                await _counterBox.put(_accKey, currValue - 1);
               },
               tooltip: 'Decrement',
               child: const Icon(MdiIcons.minusCircle),
@@ -66,9 +67,10 @@ class _CounterState extends State<Counter> {
             ),
             FloatingActionButton(
               heroTag: 'increment button',
-              onPressed: () {
+              onPressed: () async {
                 int currValue = _counterBox.get(_accKey, defaultValue: 0)!;
-                _counterBox.put(_accKey, currValue + 1);
+                /// box.put()은 Future<T>를 리턴하기 때문에 await 사용
+                await _counterBox.put(_accKey, currValue + 1);
               },
               tooltip: 'Increment',
               child: const Icon(MdiIcons.plusCircle),

@@ -15,7 +15,14 @@ class SketchPad extends StatefulWidget {
 
 class _SketchPadState extends State<SketchPad> {
   final Box _box = Hive.box(HiveCfg.tableSketchPadName);
-  int colorIndex = 0;
+  final Box _config = Hive.box(HiveCfg.tableTodoSettingsName);
+  late int colorIndex;
+
+  @override
+  void initState() {
+    super.initState();
+    colorIndex = _config.get('color_index', defaultValue: 0);
+  }
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -68,7 +75,11 @@ class _SketchPadState extends State<SketchPad> {
   Widget _makeColorCircle(int colorIdx) {
     bool selected = colorIndex == colorIdx;
     return GestureDetector(
-      onTap: () => setState(() => colorIndex = colorIdx),
+      onTap: () => setState(() {
+        colorIndex = colorIdx;
+        /// 마지막 선택된 색상을 DB에 저장
+        _config.put('color_index', colorIdx);
+      }),
       /// ClipOval - 사각형의 기본 위젯을 원형으로 자름.(원형 위젯을 만듬)
       child: ClipOval(
         child: Container(

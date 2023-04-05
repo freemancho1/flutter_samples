@@ -14,7 +14,7 @@
 <br/>
 
 ### 숨기거나 표시하기
-> /lib/samples/appbar/animation.dart
+> /lib/samples/basic/appbar/animation.dart
 
 본문의 리스트에 컨트롤러를 장착해, 
 리스트의 위치와 상관없이 단순히 상하 움직임만 감지해
@@ -28,7 +28,7 @@
 <br/>
 
 ### 확장형 앱바
-> /lib/samples/appbar/sliver.dart
+> /lib/samples/basic/appbar/sliver.dart
 
 앱바를 `CustomScrollView`않에 넣어 처음에 크게 보이다가, 
 바디에 있는 리스트의 스크롤에 따라 작아지거나 없엘 수 있는 앱바
@@ -117,6 +117,59 @@
 * GestureDetector의 `다양한 옵션` 소개
 * ClipOval - 모든 위젯을 원형으로 변환하는 위젯
 * 하이브 데이터 상태를 모니터링해 아이콘 활성/비활성 시킴
+
+<br/><br/>
+
+## Geo 데이터 처리
+Geo 데이터를 처리하기 위해서는 사용자가 Geo 데이터를 처리할 수 있도록 앱에 권한를
+부여해야 하며, 이렇기 위해서는 `AndroidMainfast.xml` 파일에 아래 권한을 정의해야 하고, 
+프로그램에서 사용자가 권한을 줄 수 있도록 기술해야 함.
+```
+    <!-- geo data -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <!-- http or geo data -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+```
+
+또한 pubspec.yaml에 아래 내용을 추가해야 함.
+```
+    geolocator: ^9.0.2  # 20230405 현재 최신
+    http: ^0.13.5       # ..
+```
+
+<br/>
+
+### 현재 위치정보 가져오기
+> /lib/samples/utils/geo/get_position/get_location.dart...
+
+간단히 현재 위치정보를 읽어옴.
+* Geo 데이터를 처리하기 위해 권한 획득 방법(AndroidManifast.xml 설정)
+* FutureBuilder를 이용한 Future<T> 리턴함수 상태 모니터링
+* Geo 데이터 품질 설정을 위한 'desiredAccuracy' 옵션 설정 
+
+<br/><br/>
+
+## Products
+좀 더 다양한 기술과 내용이 들어 있는 앱들
+
+<br/>
+
+### 계산기1
+> /lib/samples/product/calculator/calculator_app.dart
+
+간단하지만 그래도 `공학용 전자 계산기`임.
+* ConsumerWidget
+* LayoutGrid
+* NamedAreaGridPlacement
+* AutoSizeText
+* ElevatedButton vs OutlinedButton
+* StateNotifier
+* Parser & evaluate
+* object.copyWith
+* ProviderScope
+
 
 <br/><br/>
 
