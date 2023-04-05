@@ -20,7 +20,7 @@ class HiveCfg {
 
 /// 아래 enum은 사용하지 않지만, 사용법의 좋은 예이니 남겨둠.
 enum HiveTable {
-  todo(1, 'todos'),
+  contact(1, 'contacts'),
   todoSettings(0, 'todo_settings');
 
   /// hiveId = 0은, 테이블을 만들지 않고, box만 만드는 형테로
@@ -30,5 +30,5 @@ enum HiveTable {
   const HiveTable(this.hiveId, this.boxName);
 
   /// 사용법
-  /// HiveTable.todo.hiveId
+  /// HiveTable.contact.hiveId
 }

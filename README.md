@@ -42,6 +42,30 @@
 
 <br/><br/>
 
+## Animations
+다양한 애니메이션 효과를 확인할 수 있음.
+
+<br/>
+
+### 컨테이너 박스 애니메이션
+> /lib/samples/basic/animations/animated_container.dart
+
+버튼을 클릭하면 박스의 이미지가 변하는 애니메이션 구현
+* Random 색상 만들기
+* AnimatedContainer 사용법
+
+<br/>
+
+### 페이지 이동 애니메이션
+> /lib/samples/basic/animations/page_route_builder.dart
+
+위/아래로 이동하는 애니메이션으로 페이지 이동함
+* PageRouteBuilder<SlideTransition>
+* Tween
+* CurveTween
+
+<br/><br/>
+
 ## Hive
 간단한 할일목록 관리, 연락처, DB를 통한 카운터 관리 등을 확인 할 수 있다.
 

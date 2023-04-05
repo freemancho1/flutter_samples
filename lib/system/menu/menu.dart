@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_samples/samples/basic/animations/animated_container.dart';
+import 'package:flutter_samples/samples/basic/animations/page_route_builder.dart';
 import 'package:flutter_samples/samples/database/hive/contacts/contacts_app.dart';
 import 'package:flutter_samples/samples/database/hive/etc/counter.dart';
 import 'package:flutter_samples/samples/database/hive/etc/favorite_book.dart';
@@ -79,6 +81,34 @@ final List<MenuGroup> menus = [
         builder: (context) => const FreeSliverAppBar(),
       ),
     ]
+  ),
+  MenuGroup(
+      title: 'Animations',
+      subTitle: '다양한 애니메이션 효과를 확인할 수 있음.',
+      icon: const Icon(MdiIcons.animationPlay),
+      menuItems: [
+        MenuItem(
+          title: '컨테이너 박스 애니메이션',
+          description: '버튼을 클릭하면 박스의 이미지가 변하는 애니메이션 구현',
+          subTitles: [
+            'Random 색상 만들기',
+            'AnimatedContainer 사용법',
+          ],
+          routeName: 'animation/animated_container',
+          builder: (context) => const AnimatedContainerApp(),
+        ),
+        MenuItem(
+          title: '페이지 이동 애니메이션',
+          description: '위/아래로 이동하는 애니메이션으로 페이지 이동',
+          subTitles: [
+            'PageRouteBuilder<SlideTransition>',
+            'Tween',
+            'CurveTween',
+          ],
+          routeName: 'animation/page_route_builder',
+          builder: (context) => const PageRouteBuilderApp(),
+        ),
+      ]
   ),
   MenuGroup(
     title: 'Hive',
