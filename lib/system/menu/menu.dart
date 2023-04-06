@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_samples/samples/basic/animations/animated_container.dart';
+import 'package:flutter_samples/samples/basic/animations/animation_builder.dart';
+import 'package:flutter_samples/samples/basic/animations/custom_tweens.dart';
 import 'package:flutter_samples/samples/basic/animations/page_route_builder.dart';
+import 'package:flutter_samples/samples/basic/animations/tweens.dart';
+import 'package:flutter_samples/samples/basic/etc/buttons.dart';
 import 'package:flutter_samples/samples/database/hive/contacts/contacts_app.dart';
 import 'package:flutter_samples/samples/database/hive/etc/counter.dart';
 import 'package:flutter_samples/samples/database/hive/etc/favorite_book.dart';
@@ -14,6 +18,9 @@ import 'package:flutter_samples/samples/basic/appbar/sliver.dart';
 import 'package:flutter_samples/samples/database/hive/todo/todo_app.dart';
 
 import 'package:flutter_samples/samples/utils/geo/get_position/get_location.dart';
+
+import '../../samples/basic/animations/animation_controller.dart';
+import '../../samples/basic/animations/sequence_tweens.dart';
 
 class MenuItem {
   final String title;
@@ -108,7 +115,82 @@ final List<MenuGroup> menus = [
           routeName: 'animation/page_route_builder',
           builder: (context) => const PageRouteBuilderApp(),
         ),
+        MenuItem(
+          title: '애니메이션 컨트롤러',
+          description: '애니메이션 컨트롤러를 이용해 애니메이션을 동작시키거나, '
+              '애니메이션의 상태에 따라 필요한 작업을 수행 할 수 있도록 제어',
+          subTitles: [
+            'AnimationController',
+            'TickerProvider, SingleTickerProviderStateMixin',
+            'addListener, addStatusListener',
+            'ConstrainedBox, BoxConstraints',
+            '애니메이션 상태에 따라 애니메이션 조정 또는 새로운 작업 실행',
+          ],
+          routeName: 'animation/animation_controller',
+          builder: (context) => const AnimationControllerApp(),
+        ),
+        MenuItem(
+          title: '애니메이션 컨트롤러 2',
+          description: '애니메이션 객체에 애니메이션 컨트롤러를 결합해 '
+              '애니매이션을 처리하는 방법',
+          subTitles: [
+            '애니메이션 컨트롤러와 동일',
+            '차이점: Animation 객체에 AnimationController를 붙여 제어',
+            'Tweens',
+          ],
+          routeName: 'animation/tweens',
+          builder: (context) => const TweensApp(),
+        ),
+        MenuItem(
+          title: '애니메이션 컨트롤러 3',
+          description: '애니메이션 빌더를 이용해 자식 클래스에 에니메이션을 '
+              '적용해 처리하는 방법',
+          subTitles: [
+            '애니메이션 컨트롤러와 동일',
+            'AnimatedBuilder',
+            'ColorTween',
+          ],
+          routeName: 'animation/animation_builder',
+          builder: (context) => const AnimationBuilderApp(),
+        ),
+        MenuItem(
+          title: '애니메이션 컨트롤러 4',
+          description: '사용자정의 Tween 클래스를 만들어 문자열을 생성하는 '
+              '애니메이션 처리하는 방법',
+          subTitles: [
+            '애니메이션 컨트롤러와 동일',
+            '사용자정의 Tween 클래스',
+          ],
+          routeName: 'animation/custom_tweens',
+          builder: (context) => const CustomTweensApp(),
+        ),
+        MenuItem(
+          title: '애니메이션 컨트롤러 5',
+          description: '8장의 색상 Tween을 이용해 하나의 애니메이션으로 처리',
+          subTitles: [
+            '애니메이션 컨트롤러와 동일',
+            'List<TweenSequenceItem<Color?>>',
+          ],
+          routeName: 'animation/sequence_tweens',
+          builder: (context) => const SequenceTweensApp(),
+        ),
       ]
+  ),
+  MenuGroup(
+    title: 'Etc',
+    subTitle: '기본적이지만 버튼처리등 다양한 내용이 있음.',
+    icon: const Icon(MdiIcons.bowling),
+    menuItems: [
+      MenuItem(
+        title: 'Buttons',
+        description: '다양한 버튼 표현 방법을 구현',
+        subTitles: [
+          'ElevatedButton',
+        ],
+        routeName: 'basic/etc/buttons',
+        builder: (context) => const ButtonsApp(),
+      ),
+    ]
   ),
   MenuGroup(
     title: 'Hive',

@@ -64,6 +64,57 @@
 * Tween
 * CurveTween
 
+<br/>
+
+### 애니메이션 컨트롤러
+> /lib/samples/basic/animations/animation_controller.dart
+
+애니메이션 컨트롤러를 이용해 애니메이션을 동작시키거나, 애니메이션의 상태에 따라
+필요한 작업을 수행하는 방법을 이해할 수 있다.
+* AnimationController
+* TickerProvider, SingleTickerProviderStateMixin
+* addListener, addStatusListener
+* ConstrainedBox, BoxConstraints
+* 애니메이션 상태에 따라 애니메이션 조정 또는 새로운 작업 실행
+
+<br/>
+
+### 애니메이션 컨트롤러 2 
+> /lib/samples/basic/animations/tweens.dart
+
+애니메이션 객체에 애니메이션 컨트롤러를 결합해 애니매이션을 처리하는 방법
+* 애니메이션 컨트롤러와 동일
+* 차이점: Animation 객체에 AnimationController를 붙여 제어
+* Tweens
+
+<br/>
+
+### 애니메이션 컨트롤러 3
+> /lib/samples/basic/animations/animation_builder.dart
+
+애니메이션 빌더를 이용해 자식 클래스에 에니메이션을 적용해 처리하는 방법
+* 애니메이션 컨트롤러와 동일
+* AnimatedBuilder
+* ColorTween
+
+<br/>
+
+### 애니메이션 컨트롤러 4
+> /lib/samples/basic/animations/custom_tweens.dart
+
+사용자정의 Tween 클래스를 만들어 문자열을 생성하는 애니메이션 처리하는 방법
+* 애니메이션 컨트롤러와 동일
+* 사용자정의 Tween 클래스
+
+<br/>
+
+### 애니메이션 컨트롤러 5
+> /lib/samples/basic/animations/custom_tweens.dart
+
+8장의 색상 Tween을 이용해 하나의 애니메이션으로 처리'
+* 애니메이션 컨트롤러와 동일
+* List<TweenSequenceItem<Color?>>
+
 <br/><br/>
 
 ## Hive

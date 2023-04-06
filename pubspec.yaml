@@ -54,6 +54,7 @@ dependencies:
   # 계산기 관련 추가
   # product/calculator
   auto_size_text: ^3.0.0
+  # fluent_ui는 MS에서 개발한 전 플랫폼 지원 UI 시스템
   fluent_ui: ^4.0.0
   fluentui_system_icons: ^1.1.168
   flutter_layout_grid: ^2.0.1
