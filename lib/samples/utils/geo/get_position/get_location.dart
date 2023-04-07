@@ -100,11 +100,12 @@ class Location {
     try {
       /// 권한을 사용자에게 묻기 위해 사용하며,
       /// 프로그램에서 별도 저장할 필요없이 시스템이 자동으로 관리함
-      LocationPermission permission = await Geolocator.requestPermission();
+      // LocationPermission permission = await Geolocator.requestPermission();
       // debugPrint('Permission: $permission');
       // debugPrint('Permission(index): ${permission.index}');
       // debugPrint('Permission(name): ${permission.name}');
       // debugPrint('Permission(toString): ${permission.toString()}');
+      await Geolocator.requestPermission();
 
       Position position = await Geolocator.getCurrentPosition(
         /// 정확도
