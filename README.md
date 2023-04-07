@@ -135,6 +135,15 @@
 * CupertinoSwitch - iOS형 Switch
 * Slider
 
+<br/>
+
+### TabBar
+> /lib/samples/basic/etc/tabbar.dart
+
+앱바 아래 붙어있는 탭바 구현
+* AppBar(bottom:..)
+* TabBar & TabBarView
+
 <br/><br/>
 
 ## Hive

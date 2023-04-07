@@ -6,6 +6,7 @@ import 'package:flutter_samples/samples/basic/animations/custom_tweens.dart';
 import 'package:flutter_samples/samples/basic/animations/page_route_builder.dart';
 import 'package:flutter_samples/samples/basic/animations/tweens.dart';
 import 'package:flutter_samples/samples/basic/etc/button_app.dart';
+import 'package:flutter_samples/samples/basic/etc/tabbar.dart';
 import 'package:flutter_samples/samples/database/hive/contacts/contacts_app.dart';
 import 'package:flutter_samples/samples/database/hive/etc/counter.dart';
 import 'package:flutter_samples/samples/database/hive/etc/favorite_book.dart';
@@ -207,6 +208,16 @@ final List<MenuGroup> menus = [
         ],
         routeName: 'basic/etc/buttons',
         builder: (context) => const ButtonApp(),
+      ),
+      MenuItem(
+        title: 'TabBar',
+        description: '앱바 아래 붙어있는 탭바 구현',
+        subTitles: [
+          'AppBar(bottom:..)',
+          'TabBar & TabBarView',
+        ],
+        routeName: 'basic/etc/tabbar',
+        builder: (context) => const TabBarApp(),
       ),
     ]
   ),
