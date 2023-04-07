@@ -20,7 +20,11 @@ class PageRouteBuilderApp extends StatelessWidget {
       var tween = Tween<Offset>(
         begin: const Offset(0, 1), end: Offset.zero,
       );
-      var curveTween = CurveTween(curve: Curves.ease);
+      // var curveTween = CurveTween(curve: Curves.ease);
+      /// bounceIn/InOut/Out - 약간 바운스 튀듯 음직임
+      /// ease, decelerate - 기본적임
+      /// slowMiddle - 중간에 잠깐 정지하다 계속함
+      var curveTween = CurveTween(curve: Curves.slowMiddle);
       return SlideTransition(
         position: animation.drive(curveTween).drive(tween),
         child: child,
