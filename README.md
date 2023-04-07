@@ -117,6 +117,26 @@
 
 <br/><br/>
 
+## Etc
+기본적이지만 버튼처리 등 다양한 내용이 있음
+
+<br/>
+
+### Buttons
+> /lib/samples/basic/etc/button_app.dart
+
+다양한 버튼 표현 방법을 구현',
+* ElevatedButton
+* TextButton
+* OutlinedButton
+* CupertinoButton - 글자에 애니메이션(더 좋음)
+* DropDownButton
+* ToggleButton
+* CupertinoSwitch - iOS형 Switch
+* Slider
+
+<br/><br/>
+
 ## Hive
 간단한 할일목록 관리, 연락처, DB를 통한 카운터 관리 등을 확인 할 수 있다.
 

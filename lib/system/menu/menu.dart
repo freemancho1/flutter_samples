@@ -5,7 +5,7 @@ import 'package:flutter_samples/samples/basic/animations/animation_builder.dart'
 import 'package:flutter_samples/samples/basic/animations/custom_tweens.dart';
 import 'package:flutter_samples/samples/basic/animations/page_route_builder.dart';
 import 'package:flutter_samples/samples/basic/animations/tweens.dart';
-import 'package:flutter_samples/samples/basic/etc/buttons.dart';
+import 'package:flutter_samples/samples/basic/etc/button_app.dart';
 import 'package:flutter_samples/samples/database/hive/contacts/contacts_app.dart';
 import 'package:flutter_samples/samples/database/hive/etc/counter.dart';
 import 'package:flutter_samples/samples/database/hive/etc/favorite_book.dart';
@@ -20,6 +20,7 @@ import 'package:flutter_samples/samples/database/hive/todo/todo_app.dart';
 import 'package:flutter_samples/samples/utils/geo/get_position/get_location.dart';
 
 import '../../samples/basic/animations/animation_controller.dart';
+import '../../samples/basic/animations/draggable_card.dart';
 import '../../samples/basic/animations/sequence_tweens.dart';
 
 class MenuItem {
@@ -174,6 +175,16 @@ final List<MenuGroup> menus = [
           routeName: 'animation/sequence_tweens',
           builder: (context) => const SequenceTweensApp(),
         ),
+        MenuItem(
+          title: '드레그 카드 원복시키기',
+          description: '8장의 색상 Tween을 이용해 하나의 애니메이션으로 처리',
+          subTitles: [
+            '애니메이션 컨트롤러와 동일',
+            'List<TweenSequenceItem<Color?>>',
+          ],
+          routeName: 'animation/draggable_card',
+          builder: (context) => const DraggableCard(),
+        ),
       ]
   ),
   MenuGroup(
@@ -186,9 +197,16 @@ final List<MenuGroup> menus = [
         description: '다양한 버튼 표현 방법을 구현',
         subTitles: [
           'ElevatedButton',
+          'TextButton',
+          'OutlinedButton',
+          'CupertinoButton - 글자에 애니메이션(더 좋음)',
+          'DropDownButton',
+          'ToggleButton',
+          'CupertinoSwitch - iOS형 Switch',
+          'Slider',
         ],
         routeName: 'basic/etc/buttons',
-        builder: (context) => const ButtonsApp(),
+        builder: (context) => const ButtonApp(),
       ),
     ]
   ),
